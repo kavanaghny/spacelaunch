@@ -1,0 +1,8 @@
+{
+  "name": "space-launch",
+  "app_id": "767550e6",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
