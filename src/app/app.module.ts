@@ -6,7 +6,9 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { SpaceportPage } from '../pages/spaceport/spaceport';
 import { TabsPage } from '../pages/tabs/tabs';
+import { VehiclePage } from '../pages/vehicle/vehicle';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +21,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    VehiclePage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    VehiclePage
   ],
   providers: [
     StatusBar,
