@@ -14,7 +14,6 @@ import { VehiclePage } from '../pages/vehicle/vehicle';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
