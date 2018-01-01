@@ -1,17 +1,18 @@
-<ion-navbar *navbar>
-    <ion-title>Login</ion-title>
-</ion-navbar>
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 
 <ion-content padding class="page1">
-    <h2>Authentication</h2>
 
     <div>
         <label *ngIf="auth_status == 'OK'"><button ion-button (click)="signOut()" color="error">Sign Out</button>{{loggedInUser}}</label>
     </div>
 
-    <div>
-        <label>Choose authentication type:</label>
-    </div>
+    <h2>Enter Credentials or Social Login</h2>
 
     <ion-list>
 
@@ -27,16 +28,10 @@
 
     </ion-list>
 
-    <button ion-button (click)="getAuthTokenSimple()" color="success">Token Auth</button>
-    <button ion-button (click)="useAnonymousAuth()" color="danger">Anonymous Auth</button>
     <div class="button-bar">
         <button ion-button class="icon-left ion-social-facebook" color="positive" (click)="socialSignin('facebook')" type="button">
             <ion-icon name="logo-facebook"></ion-icon>
             Facebook
-        </button>
-        <button ion-button class="icon-left ion-social-github" color="positive" (click)="socialSignin('github')"type="button">
-            <ion-icon name="logo-github"></ion-icon>
-            Github
         </button>
         <button ion-button class="icon-left ion-social-googleplus" color="positive" (click)="socialSignin('google')" type="button">
             <ion-icon name="logo-google"></ion-icon>
