@@ -8,85 +8,36 @@
 
 <ion-content>
 
-<ion-card>
+    <ion-searchbar
+      [(ngModel)]="searchQuery"
+      (ionInput)="filterItems($event.target.value)">
+    </ion-searchbar>
 
-  <img src="https://c2.staticflickr.com/2/1556/23407370113_a04aa9dedc_c.jpg">
-  <ion-fab right top>
-    <button ion-fab>
-      <ion-icon name="pin"></ion-icon>
-    </button>
-  </ion-fab>
+    <ion-list>
+    <ion-card *ngFor="let item of items">
+        <img src="{{ item.thumburl }}">
+        <ion-fab right top>
+          <button ion-fab>
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
 
-  <ion-item>
-    <ion-icon name="compass" item-start large></ion-icon>
-    <h2>Kennedy Space Center</h2>
-    <p>Merritt Island, Florida, USA</p>
-  </ion-item>
-
-
-  <ion-item>
-    <span item-left>3 launch complexes</span>
-    <span item-left>(2 active)</span>
-    <button ion-button icon-left clear item-end>
-      <ion-icon name="navigate"></ion-icon>
-      Next Launch
-    </button>
-  </ion-item>
-
-</ion-card>
-
-<ion-card>
-
-  <img src="https://c2.staticflickr.com/2/1527/24308738005_95892ae224_c.jpg">
-  <ion-fab right top>
-    <button ion-fab>
-      <ion-icon name="pin"></ion-icon>
-    </button>
-  </ion-fab>
-
-  <ion-item>
-    <ion-icon name="compass" item-start large></ion-icon>
-    <h2>Jiuquan Satellite Launch Center</h2>
-    <p>Gobi Desert, Inner Mongolia, China</p>
-  </ion-item>
+        <ion-item>
+          <ion-icon name="compass" item-start large></ion-icon>
+          <h2>{{ item.name }}</h2>
+          <p>{{ item.location }}</p>
+        </ion-item>
 
 
-  <ion-item>
-    <span item-left>1 launch complex</span>
-    <span item-left></span>
-    <button ion-button icon-left clear item-end>
-      <ion-icon name="navigate"></ion-icon>
-      Next Launch
-    </button>
-  </ion-item>
-
-</ion-card>
-
-<ion-card>
-
-  <img src="https://c2.staticflickr.com/6/5649/24113133236_e8f45e21ba_c.jpg">
-  <ion-fab right top>
-    <button ion-fab>
-      <ion-icon name="pin"></ion-icon>
-    </button>
-  </ion-fab>
-
-  <ion-item>
-    <ion-icon name="compass" item-start large></ion-icon>
-    <h2>Mid-Atlantic Regional Spaceport</h2>
-    <p>Wallops Island, Virginia, USA</p>
-  </ion-item>
-
-
-  <ion-item>
-    <span item-left>6 launch complex</span>
-    <span item-left>(2 active)</span>
-    <button ion-button icon-left clear item-end>
-      <ion-icon name="navigate"></ion-icon>
-      Next Launch
-    </button>
-  </ion-item>
-
-</ion-card>
-
+        <ion-item>
+          <span item-left>? launch complexes</span>
+          <span item-left>(? active)</span>
+          <button ion-button icon-left clear item-end>
+          <ion-icon name="navigate"></ion-icon>
+          Next Launch
+          </button>
+        </ion-item>
+ 
+     </ion-card>
+     </ion-list>
 </ion-content>
