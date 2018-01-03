@@ -1,40 +1,39 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-     Rocket & Spaceplane Launch Vehicles
+     Booster & Orbital Vehicles
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
-    <ion-searchbar
-      [(ngModel)]="searchQuery"
-      (ionInput)="filterItems($event.target.value)">
-    </ion-searchbar>
+  <div padding>
+  <ion-segment [(ngModel)]="vehiclesegment">
+    <ion-segment-button value="orbital" (ionSelect)="filterVehicles('orbital')">
+      Orbital
+    </ion-segment-button>
+    <ion-segment-button value="landable" (ionSelect)="filterVehicles('landable')">
+      Landable
+    </ion-segment-button>
+    <ion-segment-button value="expendable" (ionSelect)="filterVehicles('expendable')">
+      Expendable
+    </ion-segment-button>    
+  </ion-segment>
+  </div>
 
     <ion-list>
-        <ion-item *ngFor="let item of items">
+        <ion-item *ngFor="let vehicle of vehicles">
         
         <ion-thumbnail item-start>
-          <img src="{{ item.thumburl }}">
+          <img src="{{ vehicle.thumburl }}">
         </ion-thumbnail>
-        <h2>{{ item.name }}</h2>
-        <p>{{ item.organization }}</p>
+        <h2>{{ vehicle.name }}</h2>
+        <p>{{ vehicle.organization }}</p>
 
         </ion-item>
     </ion-list>
 
-    <ion-item>
-    	<p>{{items.length}} launch vehicles found.</p>
-    </ion-item>
-
-<!--
-  <ion-item-group>
-    <ion-item-divider color="light">A</ion-item-divider>
-    <ion-item>Angola</ion-item>
-    <ion-item>Argentina</ion-item>
-  </ion-item-group>
--->
+    <p padding-left>{{vehicles.length}} {{vehiclesegment}} space transport vehicles found.</p>
 
 </ion-content>

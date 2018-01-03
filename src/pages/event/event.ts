@@ -10,8 +10,10 @@ export class EventPage {
 
   public items:any[] = [];
   searchQuery: string;
+  event: string;
 
   constructor(public navCtrl: NavController, private backand: BackandService) {
+    this.event = "future";
     this.searchQuery = '';
     let that = this;
     this.backand.on("items_updated",
@@ -37,7 +39,6 @@ export class EventPage {
   public filterItems() {
     // set q to the value of the searchbar
     var q = this.searchQuery;
-
     // if the value is an empty string don't filter the items
     if (!q || q.trim() == '') {
       return;
@@ -45,7 +46,6 @@ export class EventPage {
     else{
         q = q.trim();
     }
-
 
     let params = {
       filter: [

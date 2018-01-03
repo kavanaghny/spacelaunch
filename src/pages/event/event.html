@@ -1,12 +1,30 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Launch & Landing Events
+      Launch, Orbit & Land Events
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+
+<div padding>
+  <ion-segment [(ngModel)]="event">
+    <ion-segment-button value="future">
+      Future
+    </ion-segment-button>
+    <ion-segment-button value="now">
+      Now
+    </ion-segment-button>
+    <ion-segment-button value="past">
+      Past
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+
+<div [ngSwitch]="event">
+  <ion-list *ngSwitchCase="'future'" ngSelected="selected">
 
     <ion-searchbar
       [(ngModel)]="searchQuery"
@@ -52,7 +70,11 @@
 </ion-card>
 
     <ion-item>
-        <p>{{items.length}} space launch events found.</p>
+        <p>{{items.length}} space transport events found.</p>
     </ion-item>
+
+  </ion-list>
+</div>
+
 
 </ion-content>

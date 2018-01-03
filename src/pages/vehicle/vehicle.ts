@@ -8,35 +8,37 @@ import { BackandService } from '@backand/angular2-sdk'
 })
 export class VehiclePage {
 
-  public items:any[] = [];
-  searchQuery: string;
+  public vehicles:any[] = [];
+  vehiclesegment: string;
 
   constructor(public navCtrl: NavController, private backand: BackandService) {
-    this.searchQuery = '';
+    this.vehiclesegment = "orbital";
     let that = this;
     this.backand.on("items_updated",
       (res: any) => {
         let a = res as any[];
         let newItem = {};
         a.forEach((kv)=> newItem[kv.Key] = kv.Value);
-        that.items.unshift(newItem);
+        that.vehicles.unshift(newItem);
       }
     );
   }
 
-  public getItems() {
+  public getVehicles() {
    this.backand.object.getList('vehicle')
     .then((res: any) => {
-      this.items = res.data;
+      this.vehicles = res.data;
     },
     (err: any) => {
       alert(err.data);
     });
   }
 
-  public filterItems() {
-    // set q to the value of the searchbar
-    var q = this.searchQuery;
+  public filterVehicles(mode:string) {
+    
+    this.vehiclesegment = mode;   
+    
+    var q = mode;
 
     // if the value is an empty string don't filter the items
     if (!q || q.trim() == '') {
@@ -46,16 +48,15 @@ export class VehiclePage {
         q = q.trim();
     }
 
-
     let params = {
       filter: [
-        this.backand.helpers.filter.create('name', this.backand.helpers.filter.operators.text.contains, q),
+        this.backand.helpers.filter.create('mode', this.backand.helpers.filter.operators.text.contains, q),
       ],
     }
 
     this.backand.object.getList('vehicle', params)
     .then((res: any) => {
-      this.items = res.data;
+      this.vehicles = res.data;
     },
     (err: any) => {
       alert(err.data);
@@ -63,7 +64,7 @@ export class VehiclePage {
   }
 
   ionViewDidLoad() {
-    this.getItems()
+    this.filterVehicles(this.vehiclesegment)
   }
 
 }
