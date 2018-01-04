@@ -8,35 +8,50 @@
 
 <ion-content>
 
-    <ion-searchbar
-      [(ngModel)]="searchQuery"
-      (ionInput)="filterItems($event.target.value)">
-    </ion-searchbar>
+    <div padding>
+    <ion-segment [(ngModel)]="spaceportsegment">
+     <ion-segment-button value="North America" (ionSelect)="filterSpaceports('North America')">
+       N. America
+     </ion-segment-button>
+     <ion-segment-button value="South America" (ionSelect)="filterSpaceports('South America')">
+       S. America
+     </ion-segment-button>
+     <ion-segment-button value="East Asia" (ionSelect)="filterSpaceports('Asia')">
+       E. Asia
+     </ion-segment-button>
+     <ion-segment-button value="Oceania" (ionSelect)="filterSpaceports('Oceania')">
+       Oceania
+     </ion-segment-button>
+    </ion-segment>
+    </div>
 
     <ion-list>
-    <ion-card *ngFor="let item of items">
-        <img src="{{ item.thumburl }}">
-        <ion-fab right top>
-          <button ion-fab>
-            <ion-icon name="pin"></ion-icon>
-          </button>
-        </ion-fab>
+    <ion-card *ngFor="let spaceport of spaceports">
+    
+    <img src="{{ spaceport.thumburl }}">
 
-        <ion-item>
-          <ion-icon name="compass" item-start large></ion-icon>
-          <h2>{{ item.name }}</h2>
-          <p>{{ item.location }}</p>
-        </ion-item>
+    <ion-card-content>
+      <ion-card-title>
+        {{ spaceport.name }}
+      </ion-card-title>
+      <p>{{ spaceport.location }}</p>
+    </ion-card-content>
 
+    <ion-item>
+      <ion-icon name='navigate' item-start></ion-icon>
+      Space Vehicles Operating Here
+      <ion-badge item-end>3</ion-badge>
+    </ion-item>
 
-        <ion-item>
-          <span item-left>? launch complexes</span>
-          <button ion-button icon-left clear item-end>
-          <ion-icon name="navigate"></ion-icon>
-          Next Launch
-          </button>
-        </ion-item>
+    <ion-item>
+      <ion-icon name='calendar' item-start></ion-icon>
+      Future Launch & Landing Events Here
+      <ion-badge item-end>42</ion-badge>
+    </ion-item>
  
-     </ion-card>
-     </ion-list>
+    </ion-card>
+    </ion-list>
+ 
+    <p padding-left>{{spaceports.length}} operational spaceports found in {{spaceportsegment}}.</p>
+
 </ion-content>

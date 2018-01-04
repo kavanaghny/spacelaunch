@@ -8,35 +8,37 @@ import { BackandService } from '@backand/angular2-sdk'
 })
 export class SpaceportPage {
 
-  public items:any[] = [];
-  searchQuery: string;
+  public spaceports:any[] = [];
+  spaceportsegment: string;
 
   constructor(public navCtrl: NavController, private backand: BackandService) {
-    this.searchQuery = '';
+    this.spaceportsegment = "North America";
     let that = this;
     this.backand.on("items_updated",
       (res: any) => {
         let a = res as any[];
         let newItem = {};
         a.forEach((kv)=> newItem[kv.Key] = kv.Value);
-        that.items.unshift(newItem);
+        that.spaceports.unshift(newItem);
       }
     );
   }
 
-  public getItems() {
+  public getSpaceports() {
    this.backand.object.getList('spaceport')
     .then((res: any) => {
-      this.items = res.data;
+      this.spaceports = res.data;
     },
     (err: any) => {
       alert(err.data);
     });
   }
 
-  public filterItems() {
-    // set q to the value of the searchbar
-    var q = this.searchQuery;
+ public filterSpaceports(continent:string) {
+
+    this.spaceportsegment = continent;
+
+    var q = continent;
 
     // if the value is an empty string don't filter the items
     if (!q || q.trim() == '') {
@@ -49,13 +51,13 @@ export class SpaceportPage {
 
     let params = {
       filter: [
-        this.backand.helpers.filter.create('name', this.backand.helpers.filter.operators.text.contains, q),
+        this.backand.helpers.filter.create('continent', this.backand.helpers.filter.operators.text.contains, q),
       ],
     }
 
     this.backand.object.getList('spaceport', params)
     .then((res: any) => {
-      this.items = res.data;
+      this.spaceports = res.data;
     },
     (err: any) => {
       alert(err.data);
@@ -63,7 +65,7 @@ export class SpaceportPage {
   }
 
   ionViewDidLoad() {
-    this.getItems()
+    this.filterSpaceports(this.spaceportsegment)
   }
 
 }
