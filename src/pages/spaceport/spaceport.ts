@@ -53,8 +53,10 @@ export class SpaceportPage {
       filter: [
         this.backand.helpers.filter.create('continent', this.backand.helpers.filter.operators.text.contains, q),
       ],
+      sort: [
+        this.backand.helpers.sort.create('name', this.backand.helpers.sort.orders.asc),
+      ],
     }
-
     this.backand.object.getList('spaceport', params)
     .then((res: any) => {
       this.spaceports = res.data;

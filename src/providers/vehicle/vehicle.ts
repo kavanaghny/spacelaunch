@@ -1,19 +1,17 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Injectable } from '@angular/core';
 import { BackandService } from '@backand/angular2-sdk'
 
-@Component({
-  selector: 'page-vehicle',
-  templateUrl: 'vehicle.html'
-})
-export class VehiclePage {
+@Injectable()
+export class VehicleProvider {
+
+  public message: any = "I'm new here";
 
   public vehicles:any[] = [];
   vehiclesegment: string;
 
-  constructor(public navCtrl: NavController, private backand: BackandService) {
-    this.vehiclesegment = "orbital";
-    let that = this;
+  constructor(private backand: BackandService) {
+    this.vehiclesegment = "";
+    let that = this; 
     this.backand.on("items_updated",
       (res: any) => {
         let a = res as any[];
@@ -21,7 +19,7 @@ export class VehiclePage {
         a.forEach((kv)=> newItem[kv.Key] = kv.Value);
         that.vehicles.unshift(newItem);
       }
-    );
+    );  
   }
 
   public getVehicles() {
@@ -35,9 +33,9 @@ export class VehiclePage {
   }
 
   public filterVehicles(mode:string) {
-    
-    this.vehiclesegment = mode;   
-    
+
+    this.vehiclesegment = mode;
+
     var q = mode;
 
     // if the value is an empty string don't filter the items
@@ -52,10 +50,6 @@ export class VehiclePage {
       filter: [
         this.backand.helpers.filter.create('mode', this.backand.helpers.filter.operators.text.contains, q),
       ],
-      sort: [
-        this.backand.helpers.sort.create('name', this.backand.helpers.sort.orders.asc),
-      ],
-   
     }
 
     this.backand.object.getList('vehicle', params)
@@ -67,8 +61,8 @@ export class VehiclePage {
     });
   }
 
-  ionViewDidLoad() {
-    this.filterVehicles(this.vehiclesegment)
+  setMessage(message) {
+    this.message = message;
   }
 
 }

@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import io from 'socket.io-client';
 window["io"] = io;
 
+// import { SpaceLaunchApp } from './app.component';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -18,13 +19,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { VehiclePage } from '../pages/vehicle/vehicle';
 
 import { BackandService } from '@backand/angular2-sdk';
+import { VehicleProvider } from '../providers/vehicle/vehicle';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 // In App Login only
 import { GooglePlus } from '@ionic-native/google-plus';
-
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 // Facebook login for Ionic web shared in Facebook
@@ -69,7 +70,8 @@ import { FacebookModule } from 'ngx-facebook';
     BackandService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GooglePlus,
-    Facebook
+    Facebook,
+    VehicleProvider
   ]
 })
 export class AppModule {}
