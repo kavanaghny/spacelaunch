@@ -26,6 +26,9 @@
     </div>
 
     <ion-list>
+
+    <p padding-left>{{spaceports.length}} operational spaceports found in {{spaceportsegment}}.</p>
+
     <ion-card *ngFor="let spaceport of spaceports">
     
     <img src="{{ spaceport.thumburl }}">
@@ -51,7 +54,5 @@
  
     </ion-card>
     </ion-list>
- 
-    <p padding-left>{{spaceports.length}} operational spaceports found in {{spaceportsegment}}.</p>
 
 </ion-content>

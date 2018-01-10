@@ -23,6 +23,8 @@
   </div>
 
     <ion-list>
+        <p padding-left>{{vehicles.length}} {{vehiclesegment}} space transport vehicles found.</p>
+
         <ion-item *ngFor="let vehicle of vehicles">
         
         <ion-thumbnail item-start>
@@ -33,7 +35,5 @@
 
         </ion-item>
     </ion-list>
-
-    <p padding-left>{{vehicles.length}} {{vehiclesegment}} space transport vehicles found.</p>
 
 </ion-content>
