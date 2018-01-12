@@ -39,7 +39,7 @@
       <h2>{{ event.name }}</h2>
       <h3>{{ event.launchdate | date: 'MMM d, y' }}</h3>
       <p>{{ event.launchcomplex }}</p>
-      <button ion-button clear item-end (click)="openEventModal({charNum: 0})">See More</button>
+      <button ion-button clear item-end (click)="openEventModal({eventId: event.id})">See More</button>
     </ion-item>
 
   </ion-list>

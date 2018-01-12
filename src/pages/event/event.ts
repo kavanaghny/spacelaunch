@@ -114,46 +114,51 @@ export class EventPage {
 })
 
 export class ModalEventPage {
-  character;
+  eventDetail;
+  eventId: string;
+  public eventDetails:any[] = [];
 
   constructor(
     public platform: Platform,
     public params: NavParams,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    private backand: BackandService
   ) {
-    var characters = [
-      {
-        name: 'Gollum',
-        quote: 'Sneaky little hobbitses!',
-        image: 'assets/img/avatar-gollum.jpg',
-        items: [
-          { title: 'Race', note: 'Hobbit' },
-          { title: 'Culture', note: 'River Folk' },
-          { title: 'Alter Ego', note: 'Smeagol' }
-        ]
-      },
-      {
-        name: 'Frodo',
-        quote: 'Go back, Sam! I\'m going to Mordor alone!',
-        image: 'assets/img/avatar-frodo.jpg',
-        items: [
-          { title: 'Race', note: 'Hobbit' },
-          { title: 'Culture', note: 'Shire Folk' },
-          { title: 'Weapon', note: 'Sting' }
-        ]
-      },
-      {
-        name: 'Samwise Gamgee',
-        quote: 'What we need is a few good taters.',
-        image: 'assets/img/avatar-samwise.jpg',
-        items: [
-          { title: 'Race', note: 'Hobbit' },
-          { title: 'Culture', note: 'Shire Folk' },
-          { title: 'Nickname', note: 'Sam' }
-        ]
+    let that = this;
+    
+    this.eventId = this.params.get('eventId');
+    
+    this.backand.on("items_updated",
+      (res: any) => {
+        let a = res as any[];
+        let newItem = {};
+        a.forEach((kv)=> newItem[kv.Key] = kv.Value);
+        that.eventDetails.unshift(newItem);
       }
-    ];
-    this.character = characters[this.params.get('charNum')];
+    );
+  }
+
+  public getEventDetails(mode:string) {
+
+    this.eventId = mode;
+
+    let params = {
+      filter: [
+        this.backand.helpers.filter.create('id', this.backand.helpers.filter.operators.text.equals, this.eventId),
+      ]
+    }
+
+    this.backand.object.getList('event', params)
+    .then((res: any) => {
+      this.eventDetails = res.data;
+    },
+    (err: any) => {
+      alert(err.data);
+    });
+  }
+
+  ionViewDidLoad() {
+    this.getEventDetails(this.eventId);
   }
 
   dismiss() {
