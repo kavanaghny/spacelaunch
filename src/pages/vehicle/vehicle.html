@@ -28,11 +28,11 @@
         <ion-item *ngFor="let vehicle of vehicles">
         
         <ion-thumbnail item-start>
-          <img src="{{ vehicle.thumburl }}">
+          <img src="{{ vehicle.thumburl }}" style="width: 125px; height: 125px;">
         </ion-thumbnail>
         <h2>{{ vehicle.name }}</h2>
-        <p>{{ vehicle.organization }}</p>
-
+        <h3>{{ vehicle.organization }}</h3>
+        <p>{{ vehicle.description }}</p>
         </ion-item>
     </ion-list>
 

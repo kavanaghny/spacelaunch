@@ -12,6 +12,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { CrudPage } from '../pages/crud/crud';
 import { HomePage } from '../pages/home/home';
 import { EventPage } from '../pages/event/event';
+import { ModalEventPage } from '../pages/event/event';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { SpaceportPage } from '../pages/spaceport/spaceport';
@@ -38,6 +39,7 @@ import { FacebookModule } from 'ngx-facebook';
     ContactPage,
     CrudPage,
     EventPage,
+    ModalEventPage,
     HomePage,
     LoginPage,
     SignupPage,
@@ -57,6 +59,7 @@ import { FacebookModule } from 'ngx-facebook';
     ContactPage,
     CrudPage,
     EventPage,
+    ModalEventPage,
     HomePage,
     LoginPage,
     SignupPage,

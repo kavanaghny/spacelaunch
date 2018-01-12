@@ -32,43 +32,15 @@
 
   <p padding-left>{{events.length}} {{eventsegment}} space transport events found.</p>
 
-<ion-card *ngFor="let event of events">
-
-  <ion-item>
-    <ion-avatar item-start>
-      <img src="{{ event.imageurl }}">
-    </ion-avatar>
-    <h2>{{ event.name }}</h2>
-    <p>{{ event.launchdate | date: 'MMM d, y' }}</p>
-  </ion-item>
-
-  <img src="{{ event.imageurl }}">
-
-  <ion-card-content>
-    <p>{{ event.description }}</p>
- </ion-card-content>
-
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="disc"></ion-icon>
-        <div>{{ event.trajectory }}</div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="briefcase"></ion-icon>
-        <div>????? kg</div>
-      </button>
-    </ion-col>
-    <ion-col center text-center>
-      <ion-note>
-        T- ?? days
-      </ion-note>
-    </ion-col>
-  </ion-row>
-
-</ion-card>
+    <ion-item *ngFor="let event of events">
+      <ion-thumbnail item-start>
+       <img src="{{ event.imageurl }}" style="width: 125px; height: 75px;">
+      </ion-thumbnail>
+      <h2>{{ event.name }}</h2>
+      <h3>{{ event.launchdate | date: 'MMM d, y' }}</h3>
+      <p>{{ event.launchcomplex }}</p>
+      <button ion-button clear item-end (click)="openEventModal({charNum: 0})">See More</button>
+    </ion-item>
 
   </ion-list>
 
