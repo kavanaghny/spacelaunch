@@ -2,7 +2,7 @@
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Space Launch</name>
     <description>Discover the rockets, spaceplanes and missiles departing Earth</description>
-    <author email="john@stellarlink.com" href="http://ionicframework.com/">John Kavanagh</author>
+    <author email="john@stellarlink.com" href="http://www.stellarlink.com">John Kavanagh</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
