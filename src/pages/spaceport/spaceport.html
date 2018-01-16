@@ -30,8 +30,16 @@
     <p padding-left>{{spaceports.length}} operational spaceports found in {{spaceportsegment}}.</p>
 
     <ion-card *ngFor="let spaceport of spaceports">
-    
+   
+    <div style="position: relative"> 
     <img src="{{ spaceport.thumburl }}">
+
+    <ion-fab right top>
+      <button ion-fab (click)="openSpaceportModal({spaceportId: spaceport.id})">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-fab>
+    </div>
 
     <ion-card-content>
       <ion-card-title>
@@ -49,7 +57,7 @@
     <ion-item>
       <ion-icon name='calendar' item-start></ion-icon>
       Future Launch & Landing Events Here
-      <ion-badge item-end>42</ion-badge>
+      <ion-badge item-end>{{ spaceport.events }}</ion-badge>
     </ion-item>
  
     </ion-card>

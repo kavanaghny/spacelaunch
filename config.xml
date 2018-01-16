@@ -90,4 +90,10 @@
         <variable name="MAX_STORE" value="2" />
     </plugin>
     <plugin name="cordova-sqlite-storage" spec="^2.1.4" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDL-R24wFAvDhyjjpFrwHBE2kkbYINc5KM" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyDL-R24wFAvDhyjjpFrwHBE2kkbYINc5KM" />
+        <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Show your location on the map" />
+        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Trace your location on the map" />
+    </plugin>
 </widget>

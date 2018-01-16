@@ -7,6 +7,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { BackandService } from '@backand/angular2-sdk'
 
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
+
 @Component({
   templateUrl: 'app.html'
 })

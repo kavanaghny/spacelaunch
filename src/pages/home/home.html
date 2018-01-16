@@ -7,21 +7,21 @@
 <ion-content class="card-background-page">
 
   <ion-card>
-    <img src="https://c2.staticflickr.com/4/3760/11637882673_639eb94828_c.jpg"/>
+    <img src="https://c1.staticflickr.com/5/4719/25783512588_6a4a045c36_c.jpg"/>
     <div class="card-title" (click)="goToEventPage()">Launch, Orbit & Land</div>
-    <div class="card-subtitle">XX Space Events</div>
+    <div class="card-subtitle">{{events.length}} Space Events</div>
   </ion-card>
 
   <ion-card>
-    <img src="https://c2.staticflickr.com/8/7584/16972476942_7c50a88910_b.jpg"/>
+    <img src="https://c1.staticflickr.com/5/4653/38946556104_cf0af98a3b_c.jpg"/>
     <div class="card-title" (click)="goToVehiclePage()">Air, Booster and Capsule</div>
-    <div class="card-subtitle">{{vehicleProvider.vehicles.length}} Space Vehicles</div>
+    <div class="card-subtitle">{{vehicles.length}} Space Vehicles</div>
   </ion-card>
 
   <ion-card>
     <img src="https://c2.staticflickr.com/8/7401/16602489845_01ae781dce_b.jpg"/>
     <div class="card-title" (click)="goToSpaceportPage()">Spaceport & Range</div>
-    <div class="card-subtitle">XX Spaceports</div>
+    <div class="card-subtitle">{{spaceports.length}} Spaceports</div>
   </ion-card>
 
 </ion-content>

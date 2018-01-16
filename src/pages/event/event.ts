@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, Platform, NavParams, ViewController } from 'ionic-angular';
 
+// import { ModalSpaceportPage } from '../spaceport/spaceport';
+
 import { BackandService } from '@backand/angular2-sdk'
 
 @Component({
@@ -116,11 +118,13 @@ export class EventPage {
 export class ModalEventPage {
   eventDetail;
   eventId: string;
+  spaceportId;
   public eventDetails:any[] = [];
 
   constructor(
     public platform: Platform,
     public params: NavParams,
+    public navCtrl: NavController,
     public viewCtrl: ViewController,
     private backand: BackandService
   ) {
@@ -164,4 +168,11 @@ export class ModalEventPage {
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
+  goToSpaceportModal() {
+    this.viewCtrl.dismiss();
+    // this.navCtrl.push(ModalSpaceportPage());
+  }
+
 }
+

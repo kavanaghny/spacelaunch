@@ -27,12 +27,14 @@
 
         <ion-item *ngFor="let vehicle of vehicles">
         
-        <ion-thumbnail item-start>
-          <img src="{{ vehicle.thumburl }}" style="width: 125px; height: 125px;">
+        <ion-thumbnail item-start (click)="openVehicleModal({vehicleId: vehicle.id})">
+          <img src="{{ vehicle.imageurl }}" style="width: 125px; height: 125px;">
         </ion-thumbnail>
         <h2>{{ vehicle.name }}</h2>
         <h3>{{ vehicle.organization }}</h3>
         <p>{{ vehicle.description }}</p>
+
+        <button ion-button clear item-end (click)="openVehicleModal({vehicleId: vehicle.id})">See More</button>
         </ion-item>
     </ion-list>
 
