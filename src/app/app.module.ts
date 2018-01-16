@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { Pro } from '@ionic/pro';
 import io from 'socket.io-client';
 window["io"] = io;
 
@@ -40,6 +41,11 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 // Facebook login for Ionic web shared in Facebook
 import { FacebookModule } from 'ngx-facebook';
+
+// Inserted for Runtime Error Monitoring
+const IonicPro = Pro.init('767550e6', {
+    appVersion: "0.0.1"
+});
 
 @NgModule({
   declarations: [
@@ -90,4 +96,5 @@ import { FacebookModule } from 'ngx-facebook';
     GoogleMaps
   ]
 })
+
 export class AppModule {}
